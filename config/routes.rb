@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :entries
   resources :users, only: %i[ show new create ]
   resources :sessions, only: %i[ new create ]
+  get "sign_in", action: :new, controller: "sessions", as: :sign_in
+  get "sign_up", action: :new, controller: "users", as: :sign_up
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
