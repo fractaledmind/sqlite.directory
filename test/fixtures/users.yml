@@ -1,9 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  email: MyString
-  avatar_url: MyString
+  email: one@email.com
+  avatar_url: https://example.com/avatars/one.png
 
 two:
-  email: MyString
-  avatar_url: MyString
+  email: two@email.com
+  avatar_url:
