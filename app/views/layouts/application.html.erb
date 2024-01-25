@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "SqliteDirectory" %></title>
+    <title><%= content_for(:title) || "sqlite.directory" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
@@ -17,7 +17,33 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="px-4">
+    <header class="text-lg max-w-6xl mx-auto py-4 mb-4 flex justify-between items-center border-b">
+      <h2 class="flex items-center gap-2">
+        <%= image_tag "/icon.svg" %>
+        <%= link_to root_path, class: "group" do %>
+          <code class="">
+            <span class="text-blue-500 group-hover:underline decoration-blue-500">sqlite</span>
+            <span class="inline-block group-hover:animate-bouncing -mx-3">.</span>
+            <span class="text-black group-hover:underline decoration-black">directory</span>
+          </code>
+        <% end %>
+      </h2>
+
+      <div class="inline-flex items-center gap-2">
+        <%= button_to "/developer/authorization?origin=sign_up", data: { turbo: false }, class: "bg-blue-500 text-white rounded-md px-3 py-1 flex items-center space-x-2 hover:ring-4 hover:ring-blue-200" do %>
+          <%= render_svg "github" %>
+          <span class="font-medium">Sign in</span>
+        <% end %>
+      </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto text-left h-full">
+      <%= yield %>
+    </main>
+
+    <footer class="text-base max-w-6xl mx-auto py-4 mt-24 flex justify-between items-center border-t">
+      <p>Made by <a href="https://twitter.com/fractaledmind" class="text-blue-500 hover:underline decoration-blue-500"">@fractaledmind</a> and friends! Want to help? It's open source!</p>
+    </footer>
   </body>
 </html>
