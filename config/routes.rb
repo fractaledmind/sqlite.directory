@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :sessions
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :entries
   resources :users, only: %i[ show new create ]
