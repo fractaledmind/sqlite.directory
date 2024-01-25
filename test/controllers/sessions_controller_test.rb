@@ -5,9 +5,9 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     @session = sessions(:one)
   end
 
-  test "should get index" do
+  test "shouldn't define index" do
     get sessions_url
-    assert_response :success
+    assert_response :not_found
   end
 
   test "should get new" do
@@ -20,29 +20,30 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
       post sessions_url, params: { session: { ip_address: @session.ip_address, user_agent: @session.user_agent, user_id: @session.user_id } }
     end
 
-    assert_redirected_to session_url(Session.last)
+    assert_redirected_to user_url(Session.last.user)
   end
 
-  test "should show session" do
-    get session_url(@session)
-    assert_response :success
+  test "shouldn't define show" do
+    assert_raises NoMethodError do
+      get session_url(@session)
+    end
   end
 
-  test "should get edit" do
-    get edit_session_url(@session)
-    assert_response :success
+  test "shouldn't define edit" do
+    assert_raises NoMethodError do
+      get edit_session_url(@session)
+    end
   end
 
   test "should update session" do
-    patch session_url(@session), params: { session: { ip_address: @session.ip_address, user_agent: @session.user_agent, user_id: @session.user_id } }
-    assert_redirected_to session_url(@session)
+    assert_raises NoMethodError do
+      patch session_url(@session)
+    end
   end
 
   test "should destroy session" do
-    assert_difference("Session.count", -1) do
+    assert_raises NoMethodError do
       delete session_url(@session)
     end
-
-    assert_redirected_to sessions_url
   end
 end

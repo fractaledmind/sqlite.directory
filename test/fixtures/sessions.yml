@@ -2,10 +2,10 @@
 
 one:
   user: one
-  user_agent: MyString
-  ip_address: MyString
+  user_agent: "Mozilla/5.0 (iPhone; CPU iPhone OS 13_5_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Mobile/15E148 Safari/604.1"
+  ip_address: "69.89.31.226"
 
 two:
   user: two
-  user_agent: MyString
-  ip_address: MyString
+  user_agent: "Mozilla/5.0 (platform; rv:geckoversion) Gecko/geckotrail Firefox/firefoxversion"
+  ip_address: "2002:4559:1FE2::4559:1FE2"
