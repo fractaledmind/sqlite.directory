@@ -29,3 +29,32 @@
 
 en:
   hello: "Hello world"
+  errors:
+    messages:
+      not_saved:
+        one: "1 error prohibited this %{resource} from being saved:"
+        other: "%{count} errors prohibited this %{resource} from being saved:"
+      at_least_one: "must have at least one selection"
+  helpers:
+    label:
+      entry:
+        name: What is the name of your application?
+        url: Where can someone find it on the internet?
+        repository_url: Is there an open-source repository people can see? (optional)
+        uses: How all do you use SQLite in your application?
+        host: What hosting provider are you using? (optional)
+        operating_system: What OS does it run on? (optional)
+  activerecord:
+    attributes:
+      entry:
+        name: Application name
+        url: Application URL
+        repository_url: Repository URL
+        uses: SQLite uses
+        host: Hosting provider
+        operating_system: Operating system
+      entry/uses:
+        persistence: As my primary persistent database
+        queue: As my background job queue
+        cache: As my cache backend
+        pubsub: As my websocket server backend

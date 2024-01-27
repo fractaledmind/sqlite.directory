@@ -1,17 +1,17 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  url: MyString
-  repository_url: MyString
-  uses: 
-  host: MyString
-  operating_system: MyString
+  name: App One
+  url: https://app-one.com
+  repository_url: https://github.com/me/app-one
+  uses: []
+  host: DigitalOcean
+  operating_system: Ubuntu
 
 two:
-  name: MyString
-  url: MyString
-  repository_url: MyString
-  uses: 
-  host: MyString
-  operating_system: MyString
+  name: App Two
+  url: https://app-two.com
+  repository_url: https://gitlab.com/me/app-one
+  uses: []
+  host:
+  operating_system:

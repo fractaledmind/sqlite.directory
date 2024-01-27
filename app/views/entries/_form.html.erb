@@ -11,37 +11,44 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-  </div>
+  <section class="my-8">
+    <%= form.label :name, class: form_label_classes %>
+    <%= form.text_field :name, class: form_control_classes %>
+  </section>
 
-  <div>
-    <%= form.label :url, style: "display: block" %>
-    <%= form.text_field :url %>
-  </div>
+  <section class="my-8">
+    <%= form.label :url, class: form_label_classes %>
+    <%= form.text_field :url, class: form_control_classes %>
+  </section>
 
-  <div>
-    <%= form.label :repository_url, style: "display: block" %>
-    <%= form.text_field :repository_url %>
-  </div>
+  <fieldset class="my-8">
+    <%= tag.legend t('helpers.label.entry.uses'), class: form_label_classes %>
+    <%= form.collection_check_boxes(:uses, %w[persistence queue cache pubsub], :itself, :itself, class: form_control_classes) do |builder| %>
+      <%= builder.check_box class: "relative rounded mb-1" %>
+      <%= builder.label class: "inline-block w-full py-1 -ml-6 pl-7 rounded hover:bg-blue-100" do %>
+        <%= form.object.class.human_attribute_name("uses.#{builder.value}") %>
+      <% end %>
+    <% end %>
+  </fieldset>
 
-  <div>
-    <%= form.label :uses, style: "display: block" %>
-    <%= form.text_field :uses %>
-  </div>
+  <section class="my-8">
+    <%= form.label :repository_url, class: form_label_classes %>
+    <%= form.text_field :repository_url, class: form_control_classes %>
+  </section>
 
-  <div>
-    <%= form.label :host, style: "display: block" %>
-    <%= form.text_field :host %>
-  </div>
+  <section class="my-8">
+    <%= form.label :host, class: form_label_classes %>
+    <%= form.collection_select :host, %w[DigitalOcean Hetzner Fly Render Vultr AWS GCP Azure], :itself, :itself, { include_blank: true }, class: form_control_classes %>
+  </section>
 
-  <div>
-    <%= form.label :operating_system, style: "display: block" %>
-    <%= form.text_field :operating_system %>
-  </div>
+  <section class="my-8">
+    <%= form.label :operating_system, class: form_label_classes %>
+    <%= form.collection_select :operating_system, %w[Ubunto MacOS Windows Fedora Debian CentOS], :itself, :itself, { include_blank: true }, class: form_control_classes %>
+  </section>
 
-  <div>
-    <%= form.submit %>
+  <hr class="mt-8 pb-8">
+
+  <div class="inline-block">
+    <%= form.submit class: button_classes(type: :primary) %>
   </div>
 <% end %>
