@@ -1,0 +1,47 @@
+<%= form_with(model: entry) do |form| %>
+  <% if entry.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(entry.errors.count, "error") %> prohibited this entry from being saved:</h2>
+
+      <ul>
+        <% entry.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :url, style: "display: block" %>
+    <%= form.text_field :url %>
+  </div>
+
+  <div>
+    <%= form.label :repository_url, style: "display: block" %>
+    <%= form.text_field :repository_url %>
+  </div>
+
+  <div>
+    <%= form.label :uses, style: "display: block" %>
+    <%= form.text_field :uses %>
+  </div>
+
+  <div>
+    <%= form.label :host, style: "display: block" %>
+    <%= form.text_field :host %>
+  </div>
+
+  <div>
+    <%= form.label :operating_system, style: "display: block" %>
+    <%= form.text_field :operating_system %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
