@@ -13,10 +13,10 @@ module OAuthController
     before_action :store_destination, only: :create
     before_action :validate_state_token, only: :show
     rescue_from ActionController::InvalidAuthenticityToken do |exception|
-      redirect_to new_session_path, alert: "Authentication with #{provider_label} failed: invalid state token"
+      redirect_to root_path, alert: "Authentication with #{provider_label} failed: invalid state token"
     end
     rescue_from ActionController::ParameterMissing do |exception|
-      redirect_to new_session_path, alert: "Authentication with #{provider_label} failed: invalid code token"
+      redirect_to root_path, alert: "Authentication with #{provider_label} failed: invalid code token"
     end
   end
 
@@ -42,7 +42,7 @@ module OAuthController
   rescue ApplicationClient::Error => error
     error_response = JSON.parse(error.message, symbolize_names: true)
 
-    redirect_back fallback_location: new_session_path,
+    redirect_back fallback_location: root_path,
       alert: error_response[:message]
   end
 
