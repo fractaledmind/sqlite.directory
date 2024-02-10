@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   resources :entries, only: %i[ index show ]
   resources :users, only: %i[ show ]
   namespace :github do
-    resource :authorization, only: [ :create, :show ]
+    resource :authorization, only: %i[ create show ]
+  end
 
   constraints(AuthenticatedConstraint.new) do
     resources :entries, only: %i[ new create edit update destroy ]
