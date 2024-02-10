@@ -17,8 +17,8 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
 
-  <body class="px-4">
-    <header class="text-lg max-w-6xl mx-auto py-4 mb-4 flex justify-between items-center border-b">
+  <body class="min-h-dvh flex flex-col px-4">
+    <header class="w-full max-w-6xl mx-auto py-4 mb-4 text-lg flex justify-between items-center border-b">
       <h2 class="flex items-center gap-2">
         <%= image_tag "/icon.svg" %>
         <%= link_to root_path, class: "group" do %>
@@ -38,11 +38,11 @@
       </div>
     </header>
 
-    <main class="max-w-4xl mx-auto text-left h-full">
+    <main class="flex-grow w-full max-w-4xl mx-auto text-left">
       <%= yield %>
     </main>
 
-    <footer class="text-base max-w-6xl mx-auto py-4 mt-24 flex justify-between items-center border-t">
+    <footer class="w-full max-w-6xl mx-auto py-4 mt-24 text-base flex justify-between items-center border-t">
       <p>Made by <a href="https://twitter.com/fractaledmind" class="text-blue-500 hover:underline decoration-blue-500"">@fractaledmind</a> and friends! Want to help? It's open source!</p>
     </footer>
   </body>
