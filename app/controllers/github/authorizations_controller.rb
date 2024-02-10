@@ -23,7 +23,7 @@ module GitHub
       def authorization_succeeded(auth_info)
         if (user = User.find_by(github_uid: auth_info["uid"])).present?
           user.update(
-            avatar_url: auth_info.dig("info", "image"),
+            avatar_url: auth_info.dig("info", "avatar_url"),
             github_username: auth_info.dig("info", "login"),
             twitter_username: auth_info.dig("info", "twitter_username")
           )
@@ -33,7 +33,7 @@ module GitHub
 
         elsif Current.user.present?
           Current.user.update(
-            avatar_url: auth_info.dig("info", "image"),
+            avatar_url: auth_info.dig("info", "avatar_url"),
             github_username: auth_info.dig("info", "login"),
             twitter_username: auth_info.dig("info", "twitter_username")
           )
@@ -43,7 +43,7 @@ module GitHub
         else
           user = User.new(
             github_uid: auth_info["uid"],
-            avatar_url: auth_info.dig("info", "image"),
+            avatar_url: auth_info.dig("info", "avatar_url"),
             github_username: auth_info.dig("info", "login"),
             twitter_username: auth_info.dig("info", "twitter_username")
           )
