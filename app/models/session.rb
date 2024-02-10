@@ -7,7 +7,11 @@ class Session < ApplicationRecord
   validates :ip_address, presence: true
 
   def self.find_by_encoded_id(identifier)
-    find_by_id(identifier.to_i(36))
+    if identifier.is_a?(String) && identifier.length == 10
+      find_by_id(identifier.to_i(36))
+    else
+      find_by_id(identifier)
+    end
   end
 
   def encoded_id = id.to_s(36).rjust(10, "0")
