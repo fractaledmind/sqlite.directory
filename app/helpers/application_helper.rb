@@ -1,8 +1,8 @@
 module ApplicationHelper
-  def render_svg(icon_name, options={})
-    file = File.read(Rails.root.join('app', 'assets', 'images', "#{icon_name}.svg"))
+  def render_svg(icon_name, options = {})
+    file = File.read(Rails.root.join("app", "assets", "images", "#{icon_name}.svg"))
     doc = Nokogiri::HTML::DocumentFragment.parse file
-    svg = doc.at_css 'svg'
+    svg = doc.at_css "svg"
 
     options.each do |attr, value|
       case attr.to_sym
