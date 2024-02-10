@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :entries, only: %i[ index show ]
-  resources :users, only: %i[ show ]
   namespace :github do
     resource :authorization, only: %i[ create show ]
   end
 
   constraints(AuthenticatedConstraint.new) do
     resources :entries, only: %i[ new create edit update destroy ]
+    resource :user, only: %i[ show ]
   end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
