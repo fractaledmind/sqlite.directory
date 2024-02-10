@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate
     return true if Current.session
-    cookies.signed.delete(Session::COOKIE_KEY)
+    cookies.signed.clear
 
     if (session = Session.find_by_encoded_id(cookies.signed[Session::COOKIE_KEY]))
       Current.session = session
