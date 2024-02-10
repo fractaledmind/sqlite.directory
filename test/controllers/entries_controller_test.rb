@@ -17,7 +17,7 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create entry" do
     assert_difference("Entry.count") do
-      post entries_url, params: { entry: { host: @entry.host, name: @entry.name, operating_system: @entry.operating_system, repository_url: @entry.repository_url, url: @entry.url, uses: @entry.uses } }
+      post entries_url, params: { entry: { name: @entry.name, url: @entry.url, uses: @entry.uses, host: @entry.host, operating_system: @entry.operating_system, repository_url: @entry.repository_url } }
     end
 
     assert_redirected_to entry_url(Entry.last)

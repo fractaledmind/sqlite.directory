@@ -15,7 +15,13 @@
     </p>
   </div>
 
-  <p>Running on <span class="inline-flex items-baseline gap-1"><%= render_svg "hosts/#{entry.host.underscore}", class: "h-4 w-4" %><strong><em><%= entry.host %></em></strong></span> and <span class="inline-flex items-baseline gap-1"><%= render_svg "operating_systems/#{entry.operating_system.underscore}", class: "h-4 w-4" %><strong><em><%= entry.operating_system %></em></strong></span>. Using SQLite for <%= entry.uses.compact_blank.map { "<strong><em>#{_1}</em></strong>" }.to_sentence.html_safe %>.</p>
+  <% if entry.host && entry.operating_system %>
+    <p>Running on <span class="inline-flex items-baseline gap-1"><%= render_svg "hosts/#{entry.host.underscore}", class: "h-4 w-4" %><strong><em><%= entry.host %></em></strong></span> and <span class="inline-flex items-baseline gap-1"><%= render_svg "operating_systems/#{entry.operating_system.underscore}", class: "h-4 w-4" %><strong><em><%= entry.operating_system %></em></strong></span>. Using SQLite for <%= entry.uses.compact_blank.map { "<strong><em>#{_1}</em></strong>" }.to_sentence.html_safe %>.</p>
+  <% elsif entry.host %>
+    <p>Running on <span class="inline-flex items-baseline gap-1"><%= render_svg "hosts/#{entry.host.underscore}", class: "h-4 w-4" %><strong><em><%= entry.host %></em></strong></span>. Using SQLite for <%= entry.uses.compact_blank.map { "<strong><em>#{_1}</em></strong>" }.to_sentence.html_safe %>.</p>
+  <% elsif entry.operating_system %>
+    <p>Running on <span class="inline-flex items-baseline gap-1"><%= render_svg "operating_systems/#{entry.operating_system.underscore}", class: "h-4 w-4" %><strong><em><%= entry.operating_system %></em></strong></span>. Using SQLite for <%= entry.uses.compact_blank.map { "<strong><em>#{_1}</em></strong>" }.to_sentence.html_safe %>.</p>
+  <% end %>
 
   <%#= render "entries/actions", entry: entry %>
 <% end %>

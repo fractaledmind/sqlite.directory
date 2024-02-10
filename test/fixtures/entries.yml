@@ -4,7 +4,8 @@ one:
   name: App One
   url: https://app-one.com
   repository_url: https://github.com/me/app-one
-  uses: []
+  uses:
+    - persistence
   host: DigitalOcean
   operating_system: Ubuntu
 
