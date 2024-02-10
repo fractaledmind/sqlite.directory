@@ -21,6 +21,8 @@ module GitHub
     private
 
       def authorization_succeeded(auth_info)
+        p '*' * 100
+        p auth_info
         if (user = User.find_by(github_uid: auth_info["uid"])).present?
           user.update(
             avatar_url: auth_info.dig("info", "image"),
