@@ -119,6 +119,6 @@ module OAuthController
     def client_id = self.class::CLIENT_ID
     def client_secret = self.class::CLIENT_SECRET
     def scope = self.class::SCOPE
-    def after_oauth_path = session.delete(DESTINATION_SESSION_KEY) || user_root_path
+    def after_oauth_path = session.delete(DESTINATION_SESSION_KEY) || root_path
     def oauth_origin = session.delete(ORIGIN_SESSION_KEY)
 end
