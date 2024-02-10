@@ -2,6 +2,9 @@ module GitHub
   class AuthorizationsController < ApplicationController
     include OAuthController
 
+    skip_before_action :authenticate!
+    before_action :authenticate
+
     PROVIDER_KEY = "github"
     PROVIDER_LABEL = "GitHub"
     # see: https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps#1-request-a-users-github-identity
