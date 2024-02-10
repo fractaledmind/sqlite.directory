@@ -36,6 +36,8 @@ en:
         other: "%{count} errors prohibited this %{resource} from being saved:"
       at_least_one: "must have at least one selection"
   helpers:
+    help_text:
+      entry:
     label:
       entry:
         name: What is the name of your application?
@@ -44,6 +46,10 @@ en:
         uses: How all do you use SQLite in your application?
         host: What hosting provider are you using? (optional)
         operating_system: What OS does it run on? (optional)
+    submit:
+      entry:
+        create: "Create Listing"
+        update: "Update Listing"
   activerecord:
     attributes:
       entry:

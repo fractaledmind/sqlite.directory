@@ -1,50 +1,36 @@
 <%= form_with(model: entry) do |form| %>
-  <% if entry.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(entry.errors.count, "error") %> prohibited this entry from being saved:</h2>
+  <%= render "shared/error_messages", resource: entry %>
 
-      <ul>
-        <% entry.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render "shared/text_field",
+        form: form,
+        attribute: :name,
+        options: { placeholder: "e.g. My Awesome App" } %>
 
-  <section class="my-8">
-    <%= form.label :name, class: form_label_classes %>
-    <%= form.text_field :name, class: form_control_classes %>
-  </section>
+  <%= render "shared/text_field",
+        form: form,
+        attribute: :url,
+        options: { placeholder: "e.g. https://my-awesome-app.com" } %>
 
-  <section class="my-8">
-    <%= form.label :url, class: form_label_classes %>
-    <%= form.text_field :url, class: form_control_classes %>
-  </section>
+  <%= render "shared/fieldset_checkboxes",
+        form: form,
+        attribute: :uses,
+        allow_other: false,
+        options: {} %>
 
-  <fieldset class="my-8">
-    <%= tag.legend t('helpers.label.entry.uses'), class: form_label_classes %>
-    <%= form.collection_check_boxes(:uses, %w[persistence queue cache pubsub], :itself, :itself, class: form_control_classes) do |builder| %>
-      <%= builder.check_box class: "relative rounded mb-1" %>
-      <%= builder.label class: "inline-block w-full py-1 -ml-6 pl-7 rounded hover:bg-blue-100" do %>
-        <%= form.object.class.human_attribute_name("uses.#{builder.value}") %>
-      <% end %>
-    <% end %>
-  </fieldset>
+  <%= render "shared/text_field",
+        form: form,
+        attribute: :repository_url,
+        options: { placeholder: "e.g. https://github.com/me/my-awesome-app" } %>
 
-  <section class="my-8">
-    <%= form.label :repository_url, class: form_label_classes %>
-    <%= form.text_field :repository_url, class: form_control_classes %>
-  </section>
+  <%= render "shared/select_field",
+        form: form,
+        attribute: :host,
+        options: {} %>
 
-  <section class="my-8">
-    <%= form.label :host, class: form_label_classes %>
-    <%= form.collection_select :host, %w[DigitalOcean Hetzner Fly Render Vultr AWS GCP Azure], :itself, :itself, { include_blank: true }, class: form_control_classes %>
-  </section>
-
-  <section class="my-8">
-    <%= form.label :operating_system, class: form_label_classes %>
-    <%= form.collection_select :operating_system, %w[Ubunto MacOS Windows Fedora Debian CentOS], :itself, :itself, { include_blank: true }, class: form_control_classes %>
-  </section>
+  <%= render "shared/select_field",
+        form: form,
+        attribute: :operating_system,
+        options: {} %>
 
   <hr class="mt-8 pb-8">
 

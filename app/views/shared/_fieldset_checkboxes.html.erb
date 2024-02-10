@@ -1,0 +1,63 @@
+<%# locals: (form:, attribute:, allow_other: false, options: {}) -%>
+<% allow_other ||= false %>
+<% options ||= {} %>
+
+<% error_messages = form.object.errors&.messages_for(attribute) %>
+<% i18n_attribute_key = "#{form.object_name}.#{attribute}" %>
+<% legend_field_id = form.field_id(attribute, :legend) %>
+<% error_field_id = form.field_id(attribute, :error) %>
+<% available_options = form.object.class.public_send(attribute.to_s.pluralize) %>
+
+<%= tag.fieldset class: "my-8",
+      aria: {
+        invalid: error_messages.any?,
+        labelledby: [
+          legend_field_id,
+          (error_messages.any? ? error_field_id : nil)
+        ]
+      } do %>
+  <legend class="<%= form_label_classes %>" id="<%= legend_field_id %>">
+    <%=t i18n_attribute_key, scope: "helpers.label" %>
+  </legend>
+
+  <% if I18n.exists? "#{form.object.model_name.i18n_key}.help_texts.#{attribute}" %>
+    <pre class="font-sans whitespace-pre-wrap text-sm italic text-gray-600 mb-1"><%=t i18n_attribute_key, scope: "helpers.help_text" %></pre>
+  <% end %>
+
+  <div class="pl-2 <%= "border-l-2 border-red-600" if error_messages.any? %>">
+    <%= form.collection_check_boxes(attribute,
+          available_options,
+          :itself, :itself
+    ) do |builder| %>
+      <%= builder.check_box class: "relative rounded mb-1" %>
+      <%= builder.label class: "inline-block w-full py-1 -ml-6 pl-7 rounded hover:bg-blue-100" do %>
+        <%= form.object.class.human_attribute_name("#{attribute}.#{builder.value}") %>
+      <% end %>
+    <% end %>
+
+    <% if allow_other %>
+      <% current_option = form.object.public_send(attribute) %>
+      <% is_other = current_option.present? && !available_options.include?(current_option) %>
+      <% other_value = "#{attribute}_other_value" %>
+
+      <%= form.check_box attribute, { multiple: true, checked: is_other, class: "relative rounded mb-1" }, "other" %>
+      <%= form.label "#{attribute}_other", class: "inline-block w-full py-1 -ml-6 pl-7 rounded hover:bg-blue-100" do %>
+        <%= form.object.class.human_attribute_name("#{attribute}.other") %>
+      <% end %>
+
+      <section class="ml-6 mt-2">
+        <%= form.label other_value, class: "sr-only" %>
+        <%= form.text_field other_value,
+              class: form_control_classes,
+              placeholder: "Please describe ...",
+              value: is_other ? current_option : nil %>
+      </section>
+    <% end %>
+  </div>
+
+  <% if error_messages.any? %>
+    <p class="mt-2 text-sm text-red-600" id="<%= error_field_id %>">
+      <%= error_messages.to_sentence %>
+    </p>
+  <% end %>
+<% end %>

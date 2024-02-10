@@ -1,0 +1,28 @@
+<%# locals: (form:, attribute:, options: {}) -%>
+<% options ||= {} %>
+
+<% error_messages = form.object.errors&.messages_for(attribute) %>
+<% i18n_attribute_key = "#{form.object_name}.#{attribute}" %>
+<% error_field_id = form.field_id(attribute, :error) %>
+
+<section class="my-8">
+  <%= form.label attribute, class: form_label_classes %>
+
+  <% if I18n.exists? i18n_attribute_key, scope: "helpers.help_text" %>
+    <pre class="font-sans whitespace-pre-wrap text-sm italic text-gray-600 mb-1"><%=t i18n_attribute_key, scope: "helpers.help_text" %></pre>
+  <% end %>
+
+  <%= form.text_field attribute,
+        class: form_control_classes(errored: error_messages.any?),
+        aria: {
+          invalid: error_messages.any?,
+          describedby: error_messages.any? ? error_field_id : nil
+        },
+        **options %>
+
+  <% if error_messages.any? %>
+    <p class="mt-2 text-sm text-red-600" id="<%= error_field_id %>">
+      <%= error_messages.to_sentence %>
+    </p>
+  <% end %>
+</section>
