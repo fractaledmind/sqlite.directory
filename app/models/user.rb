@@ -1,3 +1,4 @@
 class User < ApplicationRecord
-  validates :email, presence: true, uniqueness: true
+  validates :github_uid, presence: true, uniqueness: true
+  validates :github_username, presence: true
 end
