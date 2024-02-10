@@ -1,16 +1,10 @@
-<p style="color: green"><%= notice %></p>
-
-<% content_for :title, "Entries" %>
-
-<h1>Entries</h1>
+<hgroup class="mb-12 flex items-center justify-between">
+  <h1 class="font-bold text-4xl mb-4 flex items-center gap-4">Directory</h1>
+  <%= link_to "Add entry", new_entry_path, class: button_classes(type: :primary) %>
+</hgroup>
 
 <div id="entries">
   <% @entries.each do |entry| %>
     <%= render entry %>
-    <p>
-      <%= link_to "Show this entry", entry %>
-    </p>
   <% end %>
 </div>
-
-<%= link_to "New entry", new_entry_path %>
