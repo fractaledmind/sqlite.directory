@@ -1,12 +1,5 @@
-<% content_for :title, "Editing entry" %>
-
-<h1>Editing entry</h1>
+<h1 class="font-bold text-4xl mb-4 flex items-center gap-4">Update your listing</h1>
 
 <%= render "form", entry: @entry %>
 
-<br>
-
-<div>
-  <%= link_to "Show this entry", @entry %> |
-  <%= link_to "Back to entries", entries_path %>
-</div>
+<%= link_to "Back to directory", entries_path, class: button_classes(type: :secondary_ghost) %>
