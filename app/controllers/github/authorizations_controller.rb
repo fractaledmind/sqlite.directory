@@ -2,8 +2,8 @@ module GitHub
   class AuthorizationsController < ApplicationController
     include OAuthController
 
-    skip_before_action :authenticate!
-    before_action :authenticate
+    skip_before_action :ensure_user_authenticated!
+    before_action :user_authenticated?
 
     PROVIDER_KEY = "github"
     PROVIDER_LABEL = "GitHub"
