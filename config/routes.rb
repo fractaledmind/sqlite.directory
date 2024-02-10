@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  resources :entries
-  resources :users, only: %i[ show new create ]
-  resources :sessions, only: %i[ new create ]
+  resources :entries, only: %i[ index show ]
+  resources :users, only: %i[ show ]
   namespace :github do
     resource :authorization, only: [ :create, :show ]
   end
