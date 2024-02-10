@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   resources :users, only: %i[ show ]
   namespace :github do
     resource :authorization, only: [ :create, :show ]
+
+  constraints(AuthenticatedConstraint.new) do
+    resources :entries, only: %i[ new create edit update destroy ]
   end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
