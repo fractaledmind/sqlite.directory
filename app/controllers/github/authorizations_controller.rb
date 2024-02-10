@@ -53,14 +53,14 @@ module GitHub
             redirect_to after_oauth_path,
               notice: "Signed in successfully via GitHub"
           else
-            redirect_to new_session_path,
+            redirect_to root_path,
               alert: "Authentication with GitHub failed: invalid user details"
           end
         end
       end
 
       def authorization_failed
-        redirect_to new_session_path,
+        redirect_to root_path,
           alert: "Authentication with GitHub failed"
       end
   end
