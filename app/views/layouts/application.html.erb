@@ -32,7 +32,7 @@
 
       <div class="inline-flex items-center gap-2">
         <% if Current.user.present? %>
-          <%= Current.user.github_username %>
+          <%= image_tag user_avatar_url(Current.user, size: 32), class: 'w-8 h-8 rounded-full' %>
         <% else %>
           <%= button_to "/github/authorization", data: { turbo: false }, class: "bg-[#1F2328] text-white rounded-md px-3 py-1 flex items-center space-x-2 hover:ring-4 hover:ring-gray-400" do %>
             <%= render_svg "github" %>
