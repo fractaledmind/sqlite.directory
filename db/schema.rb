@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_02_10_204325) do
+ActiveRecord::Schema[7.2].define(version: 2024_02_10_231921) do
   create_table "entries", force: :cascade do |t|
     t.string "name", null: false
     t.string "url", null: false
@@ -33,7 +33,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_02_10_204325) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "avatar_url"
+    t.string "avatar_url", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "github_uid", null: false
