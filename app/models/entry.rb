@@ -7,7 +7,7 @@ class Entry < ApplicationRecord
 
   def self.uses = %w{ persistence queue cache pubsub }
   def self.hosts = %w{ DigitalOcean Hetzner Fly Render Vultr AWS GCP Azure }
-  def self.operating_systems = %w{ Ubunto MacOS Windows Fedora Debian CentOS }
+  def self.operating_systems = %w{ Ubuntu MacOS Windows Fedora Debian CentOS }
 
   private
 
