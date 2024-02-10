@@ -16,6 +16,11 @@ module SqliteDirectory
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w[assets tasks])
 
+    # Disable field_with_errors wrapper tag
+    config.action_view.field_error_proc = proc do |html_tag, instance|
+      html_tag.html_safe
+    end
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
