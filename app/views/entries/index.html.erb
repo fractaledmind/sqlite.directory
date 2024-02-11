@@ -6,7 +6,11 @@
 </hgroup>
 
 <div id="entries">
-  <% @entries.each do |entry| %>
-    <%= render entry %>
+  <% if @entries.any? %>
+    <%= render @entries %>
+  <% else %>
+    <div class="flex items-center justify-center gap-2">
+      <span class="text-2xl">No entries yet&hellip; Want to be the first? <%= link_to "Add your entry", new_entry_path, class: "text-blue-500 decoration-blue-500 hover:underline" %></span>
+    </div>
   <% end %>
 </div>
