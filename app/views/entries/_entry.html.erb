@@ -17,6 +17,10 @@
         <span class="group-hover:underline">View source</span>
         <i>↗</i>
       <% end %>
+      <% if not current_action.entries_show? %>
+        <span>|</span>
+        <%= link_to "Details", entry, class: "text-blue-500 decoration-blue-500 hover:underline" %>
+      <% end %>
     </p>
   </div>
 

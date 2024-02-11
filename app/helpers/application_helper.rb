@@ -56,4 +56,12 @@ module ApplicationHelper
         { "bg-gray-100    text-initial    border-gray-300    hover:ring-gray-200"   => type == nil },
       )
   end
+
+  def current_controller
+    ActiveSupport::StringInquirer.new(controller_name)
+  end
+
+  def current_action
+    ActiveSupport::StringInquirer.new([controller_name, action_name].join("_"))
+  end
 end
