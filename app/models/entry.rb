@@ -1,4 +1,6 @@
 class Entry < ApplicationRecord
+  belongs_to :user
+
   validates :name, presence: true
   validates :url, presence: true
   validate :at_least_one_use

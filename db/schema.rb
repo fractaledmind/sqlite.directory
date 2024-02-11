@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_02_10_231921) do
+ActiveRecord::Schema[7.2].define(version: 2024_02_11_100345) do
   create_table "entries", force: :cascade do |t|
     t.string "name", null: false
     t.string "url", null: false
@@ -20,6 +20,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_02_10_231921) do
     t.string "operating_system"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_entries_on_user_id"
     t.check_constraint "JSON_TYPE(uses) = 'array'", name: "entry_uses_is_array"
   end
 
@@ -42,5 +44,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_02_10_231921) do
     t.index ["github_uid"], name: "index_users_on_github_uid", unique: true
   end
 
+  add_foreign_key "entries", "users"
   add_foreign_key "sessions", "users"
 end

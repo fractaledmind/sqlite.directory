@@ -1,6 +1,11 @@
 <%= tag.article id: dom_id(entry), class: "space-y-3" do %>
   <div class="flex justify-between items-center">
-    <h2 class="font-bold flex items-center text-2xl gap-2"><%= entry.name %></h2>
+    <hgroup>
+      <h2 class="font-bold flex items-center text-2xl gap-2"><%= entry.name %></h2>
+      <h3 class="text-sm">
+        <%= entry_submitted_by(entry.user) %>
+      </h3>
+    </hgroup>
 
     <p class="flex items-center gap-2">
       <%= link_to entry.url, class: "group text-blue-500 decoration-blue-500" do %>

@@ -1,7 +1,6 @@
 class EntriesController < ApplicationController
   skip_before_action :ensure_user_authenticated!, only: %i[index show]
   before_action :user_authenticated?, only: %i[index show]
-  before_action :set_entry, only: %i[ show edit update destroy ]
 
   # GET /entries
   def index
@@ -10,11 +9,12 @@ class EntriesController < ApplicationController
 
   # GET /entries/1
   def show
+      @entry = Entry.find(params[:id])
   end
 
   # GET /entries/new
   def new
-    @entry = Entry.new
+    @entry = Current.user.entries.build
   end
 
   # GET /entries/1/edit
@@ -23,7 +23,7 @@ class EntriesController < ApplicationController
 
   # POST /entries
   def create
-    @entry = Entry.new(entry_params)
+    @entry = Current.user.entries.build(entry_params)
 
     if @entry.save
       redirect_to @entry, notice: "Entry was successfully created."
@@ -34,6 +34,8 @@ class EntriesController < ApplicationController
 
   # PATCH/PUT /entries/1
   def update
+    @entry = Current.user.entries.find(params[:id])
+
     if @entry.update(entry_params)
       redirect_to @entry, notice: "Entry was successfully updated.", status: :see_other
     else
@@ -43,16 +45,13 @@ class EntriesController < ApplicationController
 
   # DELETE /entries/1
   def destroy
+    @entry = Current.user.entries.find(params[:id])
+
     @entry.destroy!
     redirect_to entries_url, notice: "Entry was successfully destroyed.", status: :see_other
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_entry
-      @entry = Entry.find(params[:id])
-    end
-
     # Only allow a list of trusted parameters through.
     def entry_params
       params
