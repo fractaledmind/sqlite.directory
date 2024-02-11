@@ -9,7 +9,11 @@ class EntriesController < ApplicationController
 
   # GET /entries/1
   def show
+    if params[:id] == "new"
+      redirect_to root_path
+    else
       @entry = Entry.find(params[:id])
+    end
   end
 
   # GET /entries/new
