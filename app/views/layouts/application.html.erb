@@ -20,8 +20,8 @@
   <body class="min-h-dvh flex flex-col px-4">
     <header class="w-full max-w-6xl mx-auto py-4 mb-4 text-lg flex justify-between items-center border-b">
       <h2 class="flex items-center gap-2">
-        <%= image_tag "/icon.svg" %>
         <%= link_to root_path, class: "group" do %>
+          <%= image_tag "/icon.svg", class: "inline-block" %>
           <code class="">
             <span class="text-blue-500 group-hover:underline decoration-blue-500">sqlite</span>
             <span class="inline-block group-hover:animate-bouncing -mx-3">.</span>
