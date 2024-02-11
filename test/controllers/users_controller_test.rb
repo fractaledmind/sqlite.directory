@@ -6,26 +6,26 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "shouldn't define index" do
-    get users_url
-    assert_response :not_found
+    assert_raises NameError do
+      get users_url
+    end
   end
 
-  test "should get new" do
-    get new_user_url
-    assert_response :success
+  test "shouldn't define new" do
+    assert_raises NameError do
+      get new_user_url
+    end
   end
 
-  test "should create user" do
-    assert_difference("User.count") do
+  test "shouldn't define create" do
+    assert_raises NameError do
       post users_url, params: { user: { email: "new@email.com" } }
     end
-
-    assert_redirected_to user_url(User.last)
   end
 
-  test "should show user" do
+  test "shouldn't show user when unauthenticated" do
     get user_url(@user)
-    assert_response :success
+    assert_response :not_found
   end
 
   test "shouldn't define edit" do
@@ -35,8 +35,9 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "shouldn't define update user" do
-    patch user_url(@user), params: { user: { avatar_url: @user.avatar_url, email: @user.email } }
-    assert_response :not_found
+    assert_raises NoMethodError do
+      patch user_url(@user), params: { user: { avatar_url: @user.avatar_url, email: @user.email } }
+    end
   end
 
   test "shouldn't define destroy" do

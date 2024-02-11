@@ -23,6 +23,7 @@ class EntriesController < ApplicationController
 
   # GET /entries/1/edit
   def edit
+    @entry = Current.user.entries.find(params[:id])
   end
 
   # POST /entries

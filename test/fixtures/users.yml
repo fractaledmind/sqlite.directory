@@ -1,9 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  email: one@email.com
+  github_uid: 12345
+  github_username: one
   avatar_url: https://example.com/avatars/one.png
+  twitter_username: one
 
 two:
-  email: two@email.com
-  avatar_url:
+  github_uid: 98765
+  github_username: two
+  avatar_url: https://example.com/avatars/two.png
+  twitter_username:

@@ -6,21 +6,21 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "shouldn't define index" do
-    get sessions_url
-    assert_response :not_found
+    assert_raises NameError do
+      get sessions_url
+    end
   end
 
-  test "should get new" do
-    get new_session_url
-    assert_response :success
+  test "shouldn't define new" do
+    assert_raises NameError do
+      get new_session_url
+    end
   end
 
-  test "should create session" do
-    assert_difference("Session.count") do
+  test "shouldn't define create" do
+    assert_raises NameError do
       post sessions_url, params: { session: { ip_address: @session.ip_address, user_agent: @session.user_agent, user_id: @session.user_id } }
     end
-
-    assert_redirected_to user_url(Session.last.user)
   end
 
   test "shouldn't define show" do
@@ -35,13 +35,13 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "should update session" do
+  test "shouldn't define update" do
     assert_raises NoMethodError do
       patch session_url(@session)
     end
   end
 
-  test "should destroy session" do
+  test "shouldn't define destroy" do
     assert_raises NoMethodError do
       delete session_url(@session)
     end
