@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   constraints(AuthenticatedConstraint.new) do
     resources :entries, only: %i[ new create edit update destroy ]
     resource :user, only: %i[ show ]
+    resources :sessions, only: %i[ show ]
   end
 
   resources :entries, only: %i[ index show ]

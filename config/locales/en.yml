@@ -35,6 +35,7 @@ en:
         one: "1 error prohibited this %{resource} from being saved:"
         other: "%{count} errors prohibited this %{resource} from being saved:"
       at_least_one: "must have at least one selection"
+      invalid_http_url: "must be a HTTP URL"
   helpers:
     help_text:
       entry:

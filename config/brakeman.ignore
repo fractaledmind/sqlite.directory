@@ -1,0 +1,74 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 4,
+      "fingerprint": "1f2d531624734662a001c3cbc72e5177abefe2176f941b439e78b17280fb5b4c",
+      "check_name": "LinkToHref",
+      "message": "Potentially unsafe model attribute in `link_to` href",
+      "file": "app/views/entries/show.html.erb",
+      "line": 55,
+      "link": "https://brakemanscanner.org/docs/warning_types/link_to_href",
+      "code": "link_to(Entry.find(params[:id]).repository_url, :class => \"group text-blue-500 decoration-blue-500\")",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "EntriesController",
+          "method": "show",
+          "line": 13,
+          "file": "app/controllers/entries_controller.rb",
+          "rendered": {
+            "name": "entries/show",
+            "file": "app/views/entries/show.html.erb"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "entries/show"
+      },
+      "user_input": "Entry.find(params[:id]).repository_url",
+      "confidence": "Weak",
+      "cwe_id": [
+        79
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 4,
+      "fingerprint": "65b976f41d12eb1e134d2cd72b3f9c358cf9f8d0d3af79db46635affc9e83077",
+      "check_name": "LinkToHref",
+      "message": "Potentially unsafe model attribute in `link_to` href",
+      "file": "app/views/entries/show.html.erb",
+      "line": 35,
+      "link": "https://brakemanscanner.org/docs/warning_types/link_to_href",
+      "code": "link_to(Entry.find(params[:id]).url, :class => \"group text-blue-500 decoration-blue-500\")",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "EntriesController",
+          "method": "show",
+          "line": 13,
+          "file": "app/controllers/entries_controller.rb",
+          "rendered": {
+            "name": "entries/show",
+            "file": "app/views/entries/show.html.erb"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "entries/show"
+      },
+      "user_input": "Entry.find(params[:id]).url",
+      "confidence": "Weak",
+      "cwe_id": [
+        79
+      ],
+      "note": ""
+    }
+  ],
+  "updated": "2024-02-12 17:13:58 +0100",
+  "brakeman_version": "6.1.2"
+}
