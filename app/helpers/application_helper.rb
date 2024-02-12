@@ -62,6 +62,6 @@ module ApplicationHelper
   end
 
   def current_action
-    ActiveSupport::StringInquirer.new([controller_name, action_name].join("_"))
+    ActiveSupport::StringInquirer.new([ controller_name, action_name ].join("_"))
   end
 end
