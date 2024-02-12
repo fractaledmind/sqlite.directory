@@ -2,7 +2,7 @@ class Entry < ApplicationRecord
   belongs_to :user
 
   validates :name, presence: true
-  validates :url, presence: true
+  validates :url, presence: true, http_url: true
   validate :at_least_one_use
 
   attribute :uses, type: Array, default: []
