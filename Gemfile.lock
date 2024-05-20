@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rails/rails.git
-  revision: 705b70a2f1ccb2b1a330124f3e50c4b7f4b5f75f
+  revision: cd31b164b1975abfe6adb9af8e0edc8bea7ce1b0
   branch: main
   specs:
     actioncable (8.0.0.alpha)
@@ -69,7 +69,7 @@ GIT
       connection_pool (>= 2.2.5)
       drb
       i18n (>= 1.6, < 2)
-      minitest (>= 5.1, < 5.22.0)
+      minitest (>= 5.1)
       tzinfo (~> 2.0, >= 2.0.5)
     rails (8.0.0.alpha)
       actioncable (= 8.0.0.alpha)
@@ -151,7 +151,7 @@ GEM
     marcel (1.0.4)
     matrix (0.4.2)
     mini_mime (1.1.5)
-    minitest (5.21.2)
+    minitest (5.23.0)
     msgpack (1.7.2)
     net-imap (0.4.11)
       date
@@ -189,7 +189,7 @@ GEM
     public_suffix (5.0.4)
     puma (6.4.2)
       nio4r (~> 2.0)
-    racc (1.7.3)
+    racc (1.8.0)
     rack (3.0.11)
     rack-session (2.0.0)
       rack (>= 3.0.0)
