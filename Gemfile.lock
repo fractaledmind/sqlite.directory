@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rails/rails.git
-  revision: 26f8edf411bee476049507cab2e59e4dffafca30
+  revision: 95a6729de88851c46d42ed54dac98358832e9d07
   branch: main
   specs:
     actioncable (8.0.0.alpha)
@@ -207,7 +207,7 @@ GEM
       nokogiri (~> 1.14)
     rainbow (3.1.1)
     rake (13.2.1)
-    rdoc (6.6.3.1)
+    rdoc (6.7.0)
       psych (>= 4.0.0)
     redis (5.2.0)
       redis-client (>= 0.22.0)
