@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rails/rails.git
-  revision: f4c39b5e2d4d6e310e5d8a9af6114b216d7fd124
+  revision: 5dabff4b7bf4cc5e2e552efb78c6a3f3e44bed37
   branch: main
   specs:
     actioncable (8.0.0.alpha)
@@ -69,6 +69,7 @@ GIT
       connection_pool (>= 2.2.5)
       drb
       i18n (>= 1.6, < 2)
+      logger
       minitest (>= 5.1)
       tzinfo (~> 2.0, >= 2.0.5)
     rails (8.0.0.alpha)
@@ -140,6 +141,7 @@ GEM
       railties (>= 6.0.0)
     json (2.7.1)
     language_server-protocol (3.17.0.3)
+    logger (1.6.0)
     loofah (2.22.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
