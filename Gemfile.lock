@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rails/rails.git
-  revision: 0d30e84878223df68efda3b0e1741611d9682a45
+  revision: 9e597ea3f7e66a520eef42d0899f66b11c96d711
   branch: main
   specs:
     actioncable (8.0.0.alpha)
@@ -134,7 +134,7 @@ GEM
     i18n (1.14.5)
       concurrent-ruby (~> 1.0)
     io-console (0.7.2)
-    irb (1.13.2)
+    irb (1.14.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     jsbundling-rails (1.3.0)
