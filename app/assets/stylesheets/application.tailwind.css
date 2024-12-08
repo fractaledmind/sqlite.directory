@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.marker\:hidden {
+  list-style: none;
+}
+.marker\:hidden::marker, /* Latest Chrome, Edge, Firefox */
+.marker\:hidden::-webkit-details-marker /* Safari */ {
+  display: none;
+}
