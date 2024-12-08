@@ -32,7 +32,7 @@
 
       <div class="inline-flex items-center gap-2">
         <% if Current.user.present? %>
-          <%= link_to user_path, class: "group flex items-center gap-2" do %>
+          <%= link_to user_path(Current.user), class: "group flex items-center gap-2" do %>
             <%= image_tag user_avatar_url(Current.user, size: 32), class: 'w-8 h-8 rounded-full' %>
             <code class="text-black group-hover:text-blue-500 group-hover:underline decoration-blue-500"><%= Current.user.github_username %></code>
             <span class="invisible group-hover:visible text-blue-500">›</span>
