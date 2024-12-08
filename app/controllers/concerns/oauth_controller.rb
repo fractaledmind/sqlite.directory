@@ -8,6 +8,12 @@ module OAuthController
   ORIGIN_PARAMS_KEY = :origin
   ORIGIN_SESSION_KEY = "oauth.origin"
 
+  class_methods do
+    def provider(model)
+      @provider = model
+    end
+  end
+
   included do
     before_action :store_origin, only: :create
     before_action :store_destination, only: :create
@@ -111,14 +117,14 @@ module OAuthController
     end
 
     # These methods can be overriden in the host controller, if needed
-    def provider_key = self.class::PROVIDER_KEY
-    def provider_label = self.class::PROVIDER_LABEL
-    def authorize_url = self.class::AUTHORIZE_URL
-    def token_url = self.class::TOKEN_URL
-    def user_info_url = self.class::USER_INFO_URL
-    def client_id = self.class::CLIENT_ID
-    def client_secret = self.class::CLIENT_SECRET
-    def scope = self.class::SCOPE
+    def provider_key = self.class.instance_variable_get(:@provider).key
+    def provider_label = self.class.instance_variable_get(:@provider).label
+    def authorize_url = self.class.instance_variable_get(:@provider).authorize_url
+    def token_url = self.class.instance_variable_get(:@provider).token_url
+    def user_info_url = self.class.instance_variable_get(:@provider).user_info_url
+    def client_id = self.class.instance_variable_get(:@provider).client_id
+    def client_secret = self.class.instance_variable_get(:@provider).client_secret
+    def scope = self.class.instance_variable_get(:@provider).scopes
     def after_oauth_path = session.delete(DESTINATION_SESSION_KEY) || root_path
     def oauth_origin = session.delete(ORIGIN_SESSION_KEY)
 end

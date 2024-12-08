@@ -1,5 +1,8 @@
+oauth_provider ||= GitHubOAuth.new
+
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  match "/developer/oauth/*phase", to: oauth_provider, via: :all
 
   # AUTHENTICATED
   resources :entries, only: %i[ new create edit update destroy ]
