@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  constraints(AuthenticatedConstraint.new) do
-    resources :entries, only: %i[ new create edit update destroy ]
-    resource :user, only: %i[ show ]
-  end
 
+  # AUTHENTICATED
+  resources :entries, only: %i[ new create edit update destroy ]
+  resource :user, only: %i[ show ]
   resources :entries, only: %i[ index show ]
   namespace :github do
     resource :authorization, only: %i[ create show ]
