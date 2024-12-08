@@ -6,10 +6,10 @@ Rails.application.routes.draw do
 
   # AUTHENTICATED
   resources :entries, only: %i[ new create edit update destroy ]
-  resource :user, only: %i[ show ]
   resources :sessions, only: %i[ destroy ]
 
   # UNAUTHENTICATED
+  resources :users, only: %i[ show ]
   resources :entries, only: %i[ index show ]
   namespace :github do
     resource :authorization, only: %i[ create show ]

@@ -1,1 +1,15 @@
 <%= render @user %>
+
+<br>
+<br>
+<br>
+
+<div id="entries">
+  <% if @user.entries.any? %>
+    <%= render @user.entries %>
+  <% else %>
+    <div class="flex items-center justify-center gap-2">
+      <span class="text-2xl">No entries yet&hellip;</span>
+    </div>
+  <% end %>
+</div>
