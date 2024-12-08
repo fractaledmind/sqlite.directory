@@ -1,9 +1,61 @@
-<hgroup class="mb-12 flex items-center justify-between">
-  <h1 class="font-bold text-4xl mb-4 flex items-center gap-4">Directory</h1>
+<hgroup class="mb-4 flex items-center justify-between">
+  <h1 class="font-bold text-4xl flex items-center gap-4">Directory</h1>
   <% if Current.user.present? %>
     <%= link_to "Add entry", new_entry_path, class: button_classes(type: :primary) %>
   <% end %>
 </hgroup>
+
+<div>
+  Only show apps running on
+  <details class="relative inline-block" dismissable>
+    <summary class="form-select marker:hidden py-px pl-1 pr-[calc(1.5em+4px)] bg-right border-transparent border-b-black focus:rounded">
+      <%= params.dig(:filter, :host).presence || "any hosting provider" %>
+    </summary>
+    <ul class="absolute z-10 left-1 [:where(&)]:min-w-48 p-[.3125rem] rounded-lg shadow-sm text-white border border-zinc-600 bg-zinc-700 focus:outline-none" style="top: <%= -((((Entry.hosts.index(params.dig(:filter, :host)) || -1) + 1) * 24) + 5) %>px;">
+      <li class="" data-selected="<%= params.dig(:filter, :host).blank? %>">
+        <%= link_to url_for(params.to_unsafe_hash.deep_merge(only_path: true, filter: { host: nil })), class: "flex items-center gap-1" do %>
+          <div class="rounded -[[data-selected='true']_&]:bg-blue-500 w-full px-1 hover:bg-blue-500">
+            any hosting provider
+          </div>
+        <% end %>
+      </li>
+      <% Entry.hosts.each_with_index do |host, i| %>
+        <li class="" data-selected="<%= params.dig(:filter, :host) == host %>">
+          <%= link_to url_for(params.to_unsafe_hash.deep_merge(only_path: true, filter: { host: host })), class: "group flex items-center gap-1" do %>
+            <%= render_svg "hosts/#{host.underscore}", class: "inline-block h-4 w-4" %>
+            <div class="rounded -[[data-selected='true']_&]:bg-blue-500 w-full px-1 group-hover:bg-blue-500"><%= host %></div>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </details> and
+  <details class="relative inline-block" dismissable>
+    <summary class="form-select marker:hidden py-px pl-1 pr-[calc(1.5em+4px)] bg-right border-transparent border-b-black">
+      <%= params.dig(:filter, :operating_system).presence || "any operating system" %>
+    </summary>
+    <ul class="absolute z-10 left-1 [:where(&)]:min-w-48 p-[.3125rem] rounded-lg shadow-sm text-white border border-zinc-600 bg-zinc-700 focus:outline-none" style="top: <%= -((((Entry.operating_systems.index(params.dig(:filter, :operating_system)) || -1) + 1) * 24) + 5) %>px;">
+      <li class="" data-selected="<%= params.dig(:filter, :operating_system).blank? %>">
+        <%= link_to url_for(params.to_unsafe_hash.deep_merge(only_path: true, filter: { operating_system: nil })), class: "flex items-center gap-1" do %>
+          <div class="rounded w-full px-1 hover:bg-blue-500">
+            any operating system
+          </div>
+        <% end %>
+      </li>
+      <% Entry.operating_systems.each do |operating_system| %>
+        <li class="" data-selected="<%= params.dig(:filter, :operating_system) == operating_system %>">
+          <%= link_to url_for(params.to_unsafe_hash.deep_merge(only_path: true, filter: { operating_system: operating_system })), class: "group flex items-center gap-1" do %>
+            <%= render_svg "operating_systems/#{operating_system.underscore}", class: "inline-block h-4 w-4" %>
+            <div class="rounded w-full px-1 group-hover:bg-blue-500"><%= operating_system %></div>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </details>
+</div>
+
+<br>
+<br>
+<br>
 
 <div id="entries">
   <% if @entries.any? %>
