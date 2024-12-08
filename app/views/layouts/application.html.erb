@@ -32,9 +32,13 @@
 
       <div class="inline-flex items-center gap-2">
         <% if Current.user.present? %>
-          <%= image_tag user_avatar_url(Current.user, size: 32), class: 'w-8 h-8 rounded-full' %>
+          <%= link_to user_path, class: "group flex items-center gap-2" do %>
+            <%= image_tag user_avatar_url(Current.user, size: 32), class: 'w-8 h-8 rounded-full' %>
+            <code class="text-black group-hover:text-blue-500 group-hover:underline decoration-blue-500"><%= Current.user.github_username %></code>
+            <span class="invisible group-hover:visible text-blue-500">›</span>
+          <% end %>
         <% else %>
-          <%= button_to "/github/authorization", data: { turbo: false }, class: "bg-[#1F2328] text-white rounded-md px-3 py-1 flex items-center space-x-2 hover:ring-4 hover:ring-gray-400" do %>
+          <%= button_to github_authorization_path, data: { turbo: false }, class: "bg-[#1F2328] text-white rounded-md px-3 py-1 flex items-center space-x-2 hover:ring-4 hover:ring-gray-400" do %>
             <%= render_svg "github" %>
             <span class="font-medium">Sign in</span>
           <% end %>
@@ -54,7 +58,7 @@
       <% end %>
     </footer>
 
-    <div class="fixed -z-10 top-0 left-0 right-0 text-center py-2">
+    <div class="fixed -z-10 top-2 left-0 right-0 text-center py-2">
       <% if notice.present? %>
         <p id="notice"
            class="py-2 px-3 bg-green-50 text-green-500 font-medium rounded-lg inline-block"
