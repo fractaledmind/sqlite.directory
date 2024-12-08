@@ -62,7 +62,7 @@
     <%= render @entries %>
   <% else %>
     <div class="flex items-center justify-center gap-2">
-      <span class="text-2xl">No entries yet&hellip; Want to be the first? <%= link_to "Add your entry", new_entry_path, class: "text-blue-500 decoration-blue-500 hover:underline" %></span>
+      <span class="text-2xl">No entries yet&hellip; Want to be the first? <%= button_to "Sign in", github_authorization_path, class: "text-blue-500 decoration-blue-500 hover:underline", form_class: "inline-block", data: { turbo: false } %> and add your entry</span>
     </div>
   <% end %>
 </div>
