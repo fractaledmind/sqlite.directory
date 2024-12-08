@@ -33,4 +33,14 @@ class ApplicationController < ActionController::Base
 
     redirect_to root_path, alert: "You need to sign in first"
   end
+
+  def filter(relation)
+    return relation unless filter_params.any?
+
+    relation.where(filter_params)
+  end
+
+  def filter_params
+    params.fetch(:filter, {}).to_unsafe_hash.compact_blank
+  end
 end

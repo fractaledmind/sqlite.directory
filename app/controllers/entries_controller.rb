@@ -4,8 +4,7 @@ class EntriesController < ApplicationController
 
   # GET /entries
   def index
-    @entries = Entry.all
-    @entries = @entries.where(**params[:filter].to_unsafe_hash.compact_blank) if params.key?(:filter)
+    @entries = filter(Entry.all)
   end
 
   # GET /entries/1
