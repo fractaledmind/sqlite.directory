@@ -31,6 +31,6 @@ class ApplicationController < ActionController::Base
   def ensure_user_authenticated!
     return true if user_authenticated?
 
-    redirect_to root_path
+    redirect_to root_path, alert: "You need to sign in first"
   end
 end
