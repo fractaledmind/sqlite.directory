@@ -28,7 +28,6 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
   errors:
     messages:
       not_saved:
@@ -49,8 +48,8 @@ en:
         operating_system: What OS does it run on? (optional)
     submit:
       entry:
-        create: "Create Listing"
-        update: "Update Listing"
+        create: "Create listing"
+        update: "Update listing"
   activerecord:
     attributes:
       entry:
