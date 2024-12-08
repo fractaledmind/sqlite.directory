@@ -48,6 +48,10 @@
 
     <footer class="w-full max-w-6xl mx-auto py-4 mt-24 text-base flex justify-between items-center border-t">
       <p>Made by <a href="https://twitter.com/fractaledmind" class="text-blue-500 hover:underline decoration-blue-500">@fractaledmind</a> and <a href="https://github.com/fractaledmind/sqlite.directory/graphs/contributors" class="text-blue-500 hover:underline decoration-blue-500">friends</a>! Want to help? It's <a href="https://github.com/fractaledmind/sqlite.directory" class="text-blue-500 hover:underline decoration-blue-500">open source</a>!</p>
+
+      <% if Current.session %>
+        <%= button_to "Sign out", Current.session, method: :delete, class: "rounded bg-transparent text-red-500 border border-red-500 py-0 px-2 hover:bg-red-500 hover:text-white" %>
+      <% end %>
     </footer>
 
     <div class="fixed -z-10 top-0 left-0 right-0 text-center py-2">
