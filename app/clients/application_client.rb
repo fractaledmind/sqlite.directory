@@ -1,6 +1,7 @@
 require "net/http"
 require "json"
 require "uri"
+require "ostruct"
 
 class ApplicationClient
   # A basic API client with HTTP methods
