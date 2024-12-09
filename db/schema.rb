@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_02_11_100345) do
+ActiveRecord::Schema[8.1].define(version: 2024_12_08_235622) do
   create_table "entries", force: :cascade do |t|
     t.string "name", null: false
     t.string "url", null: false
@@ -42,6 +42,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_02_11_100345) do
     t.string "github_username", null: false
     t.string "twitter_username"
     t.index ["github_uid"], name: "index_users_on_github_uid", unique: true
+    t.index ["github_username"], name: "index_users_on_github_username", unique: true
   end
 
   add_foreign_key "entries", "users"

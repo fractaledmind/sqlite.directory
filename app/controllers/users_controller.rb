@@ -4,6 +4,6 @@ class UsersController < ApplicationController
 
   # GET /users/:id
   def show
-    @user = User.find(params[:id])
+    @user = User.find_by(github_username: params[:slug])
   end
 end

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :sessions, only: %i[ destroy ]
 
   # UNAUTHENTICATED
-  resources :users, only: %i[ show ]
+  resources :users, only: %i[ show ], param: :slug
   resources :entries, only: %i[ index show ]
   namespace :github do
     resource :authorization, only: %i[ create show ]
