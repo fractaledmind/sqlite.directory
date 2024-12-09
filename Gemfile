@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "3.2.1"
+ruby "3.3.6"
 
 # Use main development branch of Rails
 gem "rails"
