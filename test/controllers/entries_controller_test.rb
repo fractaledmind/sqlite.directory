@@ -8,43 +8,48 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
 
     test "should get index" do
       get entries_url
+
       assert_response :success
     end
 
-    test "shouldn't define new" do
+    test "shouldn't permit new" do
       get new_entry_url
+
       assert_redirected_to root_url
     end
 
-    test "shouldn't define create" do
+    test "shouldn't permit create" do
       assert_difference("Entry.count", 0) do
         post entries_url, params: { entry: { name: @entry.name, url: @entry.url, uses: @entry.uses, host: @entry.host, operating_system: @entry.operating_system, repository_url: @entry.repository_url } }
       end
 
-      assert_response :not_found
+      assert_redirected_to root_url
     end
 
     test "should show entry" do
       get entry_url(@entry)
+
       assert_response :success
     end
 
-    test "shouldn't define edit" do
+    test "shouldn't permit edit" do
       get edit_entry_url(@entry)
-      assert_response :not_found
+
+      assert_redirected_to root_url
     end
 
-    test "shouldn't define update" do
+    test "shouldn't permit update" do
       patch entry_url(@entry), params: { entry: { host: @entry.host, name: @entry.name, operating_system: @entry.operating_system, repository_url: @entry.repository_url, url: @entry.url, uses: @entry.uses } }
-      assert_response :not_found
+
+      assert_redirected_to root_url
     end
 
-    test "shouldn't define destroy" do
+    test "shouldn't permit destroy" do
       assert_difference("Entry.count", 0) do
         delete entry_url(@entry)
       end
 
-      assert_response :not_found
+      assert_redirected_to root_url
     end
   end
 
