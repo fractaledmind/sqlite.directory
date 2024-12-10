@@ -4,7 +4,7 @@ class EntriesController < ApplicationController
 
   # GET /entries
   def index
-    @entries = filter(Entry.all)
+    @entries = filter(Entry.all).order("random()")
   end
 
   # GET /entries/1
