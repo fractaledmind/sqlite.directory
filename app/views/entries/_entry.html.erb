@@ -1,7 +1,10 @@
 <%= tag.article id: dom_id(entry), class: "space-y-3" do %>
   <div class="flex justify-between items-center">
     <hgroup>
-      <h2 class="font-bold flex items-center text-2xl gap-2"><%= entry.name %></h2>
+      <h2 class="font-bold flex items-center text-2xl gap-2">
+        <%= image_tag "https://icons.duckduckgo.com/ip3/#{URI.parse(entry.url).host}.ico", class: 'w-6 h-6 rounded-md' %>
+        <span><%= entry.name %></span>
+      </h2>
       <h3 class="text-sm">
         Submitted by: <%= entry_submitted_by(entry.user) %>
       </h3>
