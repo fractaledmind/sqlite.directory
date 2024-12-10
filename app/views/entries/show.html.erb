@@ -1,11 +1,1 @@
 <%= render @entry %>
-
-<% if @entry.user == Current.user %>
-  <div class="flex gap-2 items-center justify-between mb-8">
-    <div class="flex gap-2">
-      <%= link_to "Edit this entry", edit_entry_path(@entry), class: button_classes(type: :primary) %>
-      <%= link_to "Back to directory", entries_path, class: button_classes(type: :secondary_ghost) %>
-    </div>
-    <%= button_to "Destroy this entry", @entry, method: :delete, class: button_classes(type: :danger) %>
-  </div>
-<% end %>
