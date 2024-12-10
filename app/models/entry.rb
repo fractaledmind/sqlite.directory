@@ -3,6 +3,7 @@ class Entry < ApplicationRecord
 
   validates :name, presence: true
   validates :url, presence: true, http_url: true
+  validates :repository_url, http_url: true, allow_blank: true
   validate :at_least_one_use
 
   attribute :uses, type: Array, default: []
