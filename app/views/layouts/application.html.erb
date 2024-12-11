@@ -18,8 +18,8 @@
   </head>
 
   <body class="min-h-dvh flex flex-col px-4">
-    <header class="w-full max-w-6xl mx-auto py-4 mb-4 text-lg flex justify-between items-center border-b">
-      <h2 class="flex items-center gap-2">
+    <header class="w-full max-w-6xl mx-auto py-4 mb-4 text-lg flex justify-between items-center flex-wrap gap-y-2 border-b">
+      <h2 class="flex items-center gap-2 whitespace-nowrap">
         <%= link_to root_path, class: "group" do %>
           <%= image_tag "/icon.svg", class: "inline-block" %>
           <code class="">
@@ -30,7 +30,7 @@
         <% end %>
       </h2>
 
-      <div class="inline-flex items-center gap-2">
+      <div class="ml-auto inline-flex items-center gap-2">
         <% if Current.user.present? %>
           <%= link_to user_path(Current.user), class: "group flex items-center gap-2" do %>
             <%= image_tag user_avatar_url(Current.user, size: 32), class: 'w-8 h-8 rounded-full' %>
@@ -50,18 +50,18 @@
       <%= yield %>
     </main>
 
-    <footer class="w-full max-w-6xl mx-auto py-4 mt-24 text-base flex justify-between items-center border-t">
-      <p>Made by <a href="https://twitter.com/fractaledmind" class="text-blue-500 hover:underline decoration-blue-500">@fractaledmind</a> and <a href="https://github.com/fractaledmind/sqlite.directory/graphs/contributors" class="text-blue-500 hover:underline decoration-blue-500">friends</a>! Want to help? It's <a href="https://github.com/fractaledmind/sqlite.directory" class="text-blue-500 hover:underline decoration-blue-500">open source</a>!</p>
+    <footer class="w-full max-w-6xl mx-auto py-4 mt-24 text-base flex justify-between items-center flex-wrap-reverse gap-y-2 border-t">
+      <p class="text-balance">Made by <a href="https://twitter.com/fractaledmind" class="text-blue-500 hover:underline decoration-blue-500">@fractaledmind</a> and <a href="https://github.com/fractaledmind/sqlite.directory/graphs/contributors" class="text-blue-500 hover:underline decoration-blue-500">friends</a>! Want to help? It's <a href="https://github.com/fractaledmind/sqlite.directory" class="text-blue-500 hover:underline decoration-blue-500">open source</a>!</p>
 
       <% if Current.session %>
-        <%= button_to "Sign out", Current.session, method: :delete, class: "rounded bg-transparent text-red-500 border border-red-500 py-0 px-2 hover:bg-red-500 hover:text-white" %>
+        <%= button_to "Sign out", Current.session, method: :delete, class: "whitespace-nowrap rounded bg-transparent text-red-500 border border-red-500 py-0 px-2 hover:bg-red-500 hover:text-white" %>
       <% end %>
     </footer>
 
-    <div class="fixed -z-10 top-2 left-0 right-0 text-center py-2">
+    <div class="fixed z-10 top-1 left-0 right-0 text-center py-2">
       <% if notice.present? %>
         <p id="notice"
-           class="py-2 px-3 bg-green-50 text-green-500 font-medium rounded-lg inline-block"
+           class="py-2 px-3 bg-green-50 text-green-500 border border-green-200 font-medium rounded-lg inline-block"
            data-controller="fade">
           <%= notice %>
         </p>
@@ -69,7 +69,7 @@
 
       <% if alert.present? %>
         <p id="alert"
-           class="py-2 px-3 bg-red-50 text-red-500 font-medium rounded-lg inline-block"
+           class="py-2 px-3 bg-red-50 text-red-500 border border-red-200 font-medium rounded-lg inline-block"
            data-controller="fade">
           <%= alert %>
         </p>
