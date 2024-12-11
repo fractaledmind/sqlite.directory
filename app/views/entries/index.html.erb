@@ -1,17 +1,19 @@
-<hgroup class="mb-4 flex items-center justify-between">
-  <h1 class="font-bold text-4xl flex items-center gap-4">
+<hgroup class="mb-4 flex items-center justify-between flex-wrap gap-x-4 gap-y-2">
+  <h1 class="font-bold text-4xl flex items-center flex-wrap gap-x-4 gap-y-2">
     Directory
     <small>(<%= @entries.size %> apps)</small>
   </h1>
   <% if Current.user.present? %>
-    <%= link_to "Add entry", new_entry_path, class: button_classes(type: :primary) %>
+    <%= link_to new_entry_path, class: button_classes(type: :primary) do %>
+      <span class="whitespace-nowrap">Add entry</span>
+    <% end %>
   <% end %>
 </hgroup>
 
-<div>
+<div class="text-balance">
   Only show apps running on
   <details class="relative inline-block" dismissable>
-    <summary class="form-select marker:hidden py-px pl-1 pr-[calc(1.5em+4px)] bg-right border-transparent border-b-black focus:rounded">
+    <summary class="form-select marker:hidden whitespace-nowrap py-px pl-1 pr-[calc(1.5em+4px)] bg-right border-transparent border-b-black focus:rounded">
       <%= params.dig(:filter, :host).presence || "any hosting provider" %>
     </summary>
     <ul class="absolute z-10 left-1 [:where(&)]:min-w-48 p-[.3125rem] rounded-lg shadow-sm text-white border border-zinc-600 bg-zinc-700 focus:outline-none" style="top: <%= -((((Entry.hosts.index(params.dig(:filter, :host)) || -1) + 1) * 24) + 5) %>px;">
@@ -33,7 +35,7 @@
     </ul>
   </details> and
   <details class="relative inline-block" dismissable>
-    <summary class="form-select marker:hidden py-px pl-1 pr-[calc(1.5em+4px)] bg-right border-transparent border-b-black">
+    <summary class="form-select marker:hidden whitespace-nowrap py-px pl-1 pr-[calc(1.5em+4px)] bg-right border-transparent border-b-black">
       <%= params.dig(:filter, :operating_system).presence || "any operating system" %>
     </summary>
     <ul class="absolute z-10 left-1 [:where(&)]:min-w-48 p-[.3125rem] rounded-lg shadow-sm text-white border border-zinc-600 bg-zinc-700 focus:outline-none" style="top: <%= -((((Entry.operating_systems.index(params.dig(:filter, :operating_system)) || -1) + 1) * 24) + 5) %>px;">
