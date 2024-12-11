@@ -4,9 +4,7 @@
     <small>(<%= @entries.size %> apps)</small>
   </h1>
   <% if Current.user.present? %>
-    <%= link_to new_entry_path, class: button_classes(type: :primary) do %>
-      <span class="whitespace-nowrap">Add entry</span>
-    <% end %>
+    <%= link_to "Add entry", new_entry_path, class: button_classes(type: :primary) %>
   <% end %>
 </hgroup>
 

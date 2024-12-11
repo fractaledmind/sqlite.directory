@@ -41,7 +41,7 @@ module ApplicationHelper
 
   def button_classes(type: nil, size: :sm)
       class_names(
-        "rounded-lg font-medium cursor-pointer border hover:ring-4",
+        "inline-block whitespace-nowrap rounded-lg font-medium cursor-pointer border hover:ring-4",
         { "py-3 px-5"     => size == :md },
         { "py-1.5 px-2.5" => size == :sm },
         { "py-0 px-2"     => size == :xs },
