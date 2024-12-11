@@ -74,7 +74,7 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
         post entries_url, params: { entry: { name: @entry.name, url: @entry.url, uses: @entry.uses, host: @entry.host, operating_system: @entry.operating_system, repository_url: @entry.repository_url } }
       end
 
-      assert_redirected_to entry_url(Entry.last)
+      assert_redirected_to entries_url
     end
 
     test "should show entry" do
@@ -89,7 +89,7 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
 
     test "should update entry" do
       patch entry_url(@entry), params: { entry: { host: @entry.host, name: @entry.name, operating_system: @entry.operating_system, repository_url: @entry.repository_url, url: @entry.url, uses: @entry.uses } }
-      assert_redirected_to entry_url(@entry)
+      assert_redirected_to entries_url
     end
 
     test "should destroy entry" do
