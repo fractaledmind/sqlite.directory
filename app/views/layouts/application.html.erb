@@ -75,5 +75,15 @@
         </p>
       <% end %>
     </div>
+
+    <% if Rails.env.development? %>
+      <div class="-mx-4 -z-10 text-center text-xs text-white bg-red-500 sm:bg-orange-500 md:bg-yellow-500 lg:bg-green-500 xl:bg-blue-500 2xl:bg-indigo-500">
+        <code class="inline sm:hidden">xs</code>
+        <code class="hidden sm:inline md:hidden">sm</code>
+        <code class="hidden md:inline lg:hidden">md</code>
+        <code class="hidden lg:inline xl:hidden">lg</code>
+        <code class="hidden xl:inline 2xl:hidden">xl</code>
+        <code class="hidden 2xl:inline">2xl</code>
+    <% end %>
   </body>
 </html>
