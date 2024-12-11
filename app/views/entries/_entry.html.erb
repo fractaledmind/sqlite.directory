@@ -1,5 +1,5 @@
 <%= tag.article id: dom_id(entry), class: "space-y-3" do %>
-  <div class="flex justify-between items-center">
+  <div class="flex justify-between items-center flex-wrap gap-y-2">
     <hgroup>
       <h2 class="font-bold flex items-center text-2xl gap-2">
         <%= image_tag "https://icons.duckduckgo.com/ip3/#{URI.parse(entry.url).host}.ico", class: 'w-6 h-6 rounded-md' %>
@@ -10,13 +10,13 @@
       </h3>
     </hgroup>
 
-    <p class="flex items-center gap-4">
-      <%= link_to entry.url, class: "group text-blue-500 decoration-blue-500" do %>
+    <p class="flex items-center flex-wrap gap-x-4 gap-y-2">
+      <%= link_to entry.url, class: "group text-blue-500 decoration-blue-500 whitespace-nowrap" do %>
         <span class="group-hover:underline">Visit app</span>
         <i>↗</i>
       <% end %>
       <% if entry.repository_url? %>
-        <%= link_to entry.repository_url, class: "group text-blue-500 decoration-blue-500" do %>
+        <%= link_to entry.repository_url, class: "group text-blue-500 decoration-blue-500 whitespace-nowrap" do %>
           <span class="group-hover:underline">View source</span>
           <i>↗</i>
         <% end %>
@@ -24,22 +24,28 @@
     </p>
   </div>
 
-  <% if entry.host.present? && entry.operating_system.present? %>
-    <p>Running on <%= render_svg "hosts/#{entry.host.underscore}", class: "inline-block h-4 w-4 mb-1" %><strong><em><%= entry.host %></em></strong> and <%= render_svg "operating_systems/#{entry.operating_system.underscore}", class: "inline-block h-4 w-4 mb-1" %><strong><em><%= entry.operating_system %></em></strong>. Using SQLite for <%= entry.uses.compact_blank.map { "<strong><em>#{_1}</em></strong>" }.to_sentence.html_safe %>.</p>
-  <% elsif entry.host.present? %>
-    <p>Running on <span class="inline-flex items-baseline gap-1"><%= render_svg "hosts/#{entry.host.underscore}", class: "h-4 w-4" %><strong><em><%= entry.host %></em></strong></span>. Using SQLite for <%= entry.uses.compact_blank.map { "<strong><em>#{_1}</em></strong>" }.to_sentence.html_safe %>.</p>
-  <% elsif entry.operating_system.present? %>
-    <p>Running on <span class="inline-flex items-baseline gap-1"><%= render_svg "operating_systems/#{entry.operating_system.underscore}", class: "h-4 w-4" %><strong><em><%= entry.operating_system %></em></strong></span>. Using SQLite for <%= entry.uses.compact_blank.map { "<strong><em>#{_1}</em></strong>" }.to_sentence.html_safe %>.</p>
-  <% else %>
-    <p>Using SQLite for <%= entry.uses.compact_blank.map { "<strong><em>#{_1}</em></strong>" }.to_sentence.html_safe %>.</p>
-  <% end %>
+  <p class="text-balance">
+    <% if entry.host.present? && entry.operating_system.present? %>
+      Running on <%= render_svg "hosts/#{entry.host.underscore}", class: "inline-block h-4 w-4 mb-1" %><strong><em><%= entry.host %></em></strong> and <%= render_svg "operating_systems/#{entry.operating_system.underscore}", class: "inline-block h-4 w-4 mb-1" %><strong><em><%= entry.operating_system %></em></strong>. Using SQLite for <%= entry.uses.compact_blank.map { "<strong><em>#{_1}</em></strong>" }.to_sentence.html_safe %>.
+    <% elsif entry.host.present? %>
+      Running on <span class="inline-flex items-baseline gap-1"><%= render_svg "hosts/#{entry.host.underscore}", class: "h-4 w-4" %><strong><em><%= entry.host %></em></strong></span>. Using SQLite for <%= entry.uses.compact_blank.map { "<strong><em>#{_1}</em></strong>" }.to_sentence.html_safe %>.
+    <% elsif entry.operating_system.present? %>
+      Running on <span class="inline-flex items-baseline gap-1"><%= render_svg "operating_systems/#{entry.operating_system.underscore}", class: "h-4 w-4" %><strong><em><%= entry.operating_system %></em></strong></span>. Using SQLite for <%= entry.uses.compact_blank.map { "<strong><em>#{_1}</em></strong>" }.to_sentence.html_safe %>.
+    <% else %>
+      Using SQLite for <%= entry.uses.compact_blank.map { "<strong><em>#{_1}</em></strong>" }.to_sentence.html_safe %>.
+    <% end %>
+  </p>
 
   <% if entry.user == Current.user %>
     <div class="flex gap-2 items-center justify-end">
-      <div class="flex gap-2">
-        <%= link_to "Edit this entry", edit_entry_path(entry), class: button_classes(type: :primary) %>
-      </div>
-      <%= button_to "Destroy this entry", entry, method: :delete, class: button_classes(type: :danger) %>
+      <%= link_to edit_entry_path(entry), class: button_classes(type: :primary) do %>
+        <span>Edit</span>
+        <span class="hidden sm:inline">this entry</span>
+      <% end %>
+      <%= button_to entry, method: :delete, class: button_classes(type: :danger) do %>
+        <span>Delete</span>
+        <span class="hidden sm:inline">this entry</span>
+      <% end %>
     </div>
   <% end %>
 <% end %>
