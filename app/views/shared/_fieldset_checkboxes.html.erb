@@ -29,10 +29,12 @@
           available_options,
           :itself, :itself
     ) do |builder| %>
-      <%= builder.check_box class: "relative rounded mb-1" %>
-      <%= builder.label class: "inline-block w-full py-1 -ml-6 pl-7 rounded hover:bg-blue-100" do %>
-        <%= form.object.class.human_attribute_name("#{attribute}.#{builder.value}") %>
-      <% end %>
+      <div class="flex items-center gap-3">
+        <%= builder.check_box class: "relative rounded" %>
+        <%= builder.label class: "inline-block w-full py-1 rounded hover:bg-blue-100" do %>
+          <%= form.object.class.human_attribute_name("#{attribute}.#{builder.value}") %>
+        <% end %>
+      </div>
     <% end %>
 
     <% if allow_other %>
