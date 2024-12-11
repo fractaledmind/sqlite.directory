@@ -31,7 +31,7 @@ class EntriesController < ApplicationController
     @entry = Current.user.entries.build(entry_params)
 
     if @entry.save
-      redirect_to @entry, notice: "Entry was successfully created."
+      redirect_to entries_path, notice: "Entry was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -42,7 +42,7 @@ class EntriesController < ApplicationController
     @entry = Current.user.entries.find(params[:id])
 
     if @entry.update(entry_params)
-      redirect_to @entry, notice: "Entry was successfully updated.", status: :see_other
+      redirect_to entries_path, notice: "Entry was successfully updated.", status: :see_other
     else
       render :edit, status: :unprocessable_entity
     end
@@ -53,7 +53,7 @@ class EntriesController < ApplicationController
     @entry = Current.user.entries.find(params[:id])
 
     @entry.destroy!
-    redirect_to entries_url, notice: "Entry was successfully destroyed.", status: :see_other
+    redirect_to entries_path, notice: "Entry was successfully destroyed.", status: :see_other
   end
 
   private
