@@ -5,11 +5,23 @@
 <br>
 
 <div id="entries">
-  <% if @user.entries.any? %>
+    <% if @user.entries.any? %>
     <%= render @user.entries %>
-  <% else %>
+    <% else %>
     <div class="flex items-center justify-center gap-2">
-      <span class="text-2xl">No entries yet&hellip;</span>
+        <span class="text-2xl">No entries yet&hellip;</span>
     </div>
-  <% end %>
+    <% end %>
 </div>
+
+<%if @user = Current.user%>
+<details>
+    <summary class=" cursor-pointer focus:outline-none focus-visible:ring ring-offset-2 ring-blue-500 text-xl">
+        <strong>Sessions:</strong>
+        <%= @user.sessions.size %>
+    </summary>
+    <ul class="list-none space-y-4 pl-4">
+        <%= render @user.sessions.order(created_at: :desc) %>
+    </ul>
+</details>
+<%end%>
