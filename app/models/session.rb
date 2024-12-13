@@ -6,6 +6,8 @@ class Session < ApplicationRecord
   validates :user_agent, presence: true
   validates :ip_address, presence: true
 
+  def browser = @browser ||= Browser.new(user_agent)
+
   def self.find_by_encoded_id(identifier)
     if identifier.is_a?(String) && identifier.length == 10
       find_by_id(identifier.to_i(36))

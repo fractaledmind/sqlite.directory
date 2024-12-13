@@ -1,0 +1,17 @@
+<li class="flex justify-between items-center py-2 md:py-4">
+    <div class=" whitespace-nowrap py-1">
+        <span><%= session.browser.name.to_s.capitalize %></span>
+        <span><%= session.browser.version %>&nbsp;for</span>
+        <span><%= session.browser.platform.to_s.capitalize %></span>
+        <% unless session.browser.device.unknown? %>
+        <span>on&nbsp;<%= session.browser.device.name.to_s.capitalize %></span>
+        <%end%>
+        <% if session == Current.session %>
+        <span class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/40">Active</span>
+        <% end %>
+    </div>
+    <%= button_to session_path(session), method: :delete,class: button_classes(type: :danger) do%>
+    <span>Delete</span>
+    <span class="hidden sm:inline">this session</span>
+    <%end%>
+</li>
