@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "3.3.6"
+ruby "3.4.5"
 
 # Use main development branch of Rails
 gem "rails"
@@ -62,6 +62,8 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
+
+gem "vertical", path: "/Users/fractaled/Code/YippeeFun/vertical"
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]

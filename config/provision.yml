@@ -1,0 +1,4 @@
+provider: digital_ocean
+api_token: <%= ENV["DIGITALOCEAN_TOKEN"] %>
+region: fra1
+size: xs

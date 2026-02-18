@@ -1,0 +1,11 @@
+app: sqlite-directory
+
+server:
+  host: 159.223.251.54
+  user: deploy
+
+web_server: puma
+ruby_version: "3.4"
+
+git:
+  repo: git@github.com:fractaledmind/sqlite.directory.git
