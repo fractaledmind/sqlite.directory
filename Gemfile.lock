@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/joeldrapper/vertical.git
-  revision: fbbbce5d37b245f3eca1d1be208b40f4c0ad69db
+  revision: ad32c70bfe6be90cded51cd618f8695438c134db
   branch: dhh-code-review-fixes
   specs:
     vertical (0.1.0)
@@ -254,7 +254,7 @@ GEM
     stimulus-rails (1.3.4)
       railties (>= 6.0.0)
     stringio (3.1.2)
-    thor (1.3.2)
+    thor (1.5.0)
     timeout (0.4.2)
     turbo-rails (2.0.11)
       actionpack (>= 6.0.0)

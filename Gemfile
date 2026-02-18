@@ -63,7 +63,9 @@ group :development do
   # gem "spring"
 end
 
-gem "vertical", github: "joeldrapper/vertical", branch: "dhh-code-review-fixes"
+group :development do
+  gem "vertical", github: "joeldrapper/vertical", branch: "dhh-code-review-fixes"
+end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
