@@ -1,5 +1,7 @@
-PATH
-  remote: /Users/fractaled/Code/YippeeFun/vertical
+GIT
+  remote: https://github.com/joeldrapper/vertical.git
+  revision: fbbbce5d37b245f3eca1d1be208b40f4c0ad69db
+  branch: dhh-code-review-fixes
   specs:
     vertical (0.1.0)
       thor (~> 1.3)

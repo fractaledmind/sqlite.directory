@@ -63,7 +63,7 @@ group :development do
   # gem "spring"
 end
 
-gem "vertical", path: "/Users/fractaled/Code/YippeeFun/vertical"
+gem "vertical", github: "joeldrapper/vertical", branch: "dhh-code-review-fixes"
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
