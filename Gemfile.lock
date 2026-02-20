@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/joeldrapper/vertical.git
-  revision: ad32c70bfe6be90cded51cd618f8695438c134db
-  branch: dhh-code-review-fixes
+  revision: c99872892eea3b6c4e8ec660ec1e340bad7ccb34
+  branch: main
   specs:
     vertical (0.1.0)
       thor (~> 1.3)

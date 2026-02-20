@@ -64,7 +64,7 @@ group :development do
 end
 
 group :development do
-  gem "vertical", github: "joeldrapper/vertical", branch: "dhh-code-review-fixes"
+  gem "vertical", github: "joeldrapper/vertical", branch: "main"
 end
 
 group :test do
